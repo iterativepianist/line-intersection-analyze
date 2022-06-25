@@ -2,7 +2,7 @@ import numpy
 from matplotlib import pyplot as plt
 
 
-def line_intersection(line1, line2):
+def line_intersection_own_impl(line1, line2):
     x1, x2, x3, x4 = line1[0][0], line1[1][0], line2[0][0], line2[1][0]
     y1, y2, y3, y4 = line1[0][1], line1[1][1], line2[0][1], line2[1][1]
 
@@ -125,7 +125,7 @@ def lineIntersec(p1, p2, p3, p4):
 
         #p3 = [-5, 5]
         #p4 = [5, 20]
-        result = line_intersection([p1, p2], [p3, p4])
+        result = line_intersection_own_impl([p1, p2], [p3, p4])
 
         print("line_intersection_result", result)
 
