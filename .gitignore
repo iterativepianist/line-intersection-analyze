@@ -1,2 +1,5 @@
 venv/
 .idea/
+project/static/image.jpg
+__pycache__/
+project/__pycache__/
