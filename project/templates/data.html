@@ -1,26 +1,78 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  Tutaj wchodzi kontent tabela i analiza
-</h1>
 <body>
- <table>
-    <tr>
-        {% for header in headings  %}
-        <th>{{ header }}</th>
-        {% endfor %}
-    </tr>
+  <form method="POST" action="/calculate">
+            <!--  First line  -->
+            <h1 class="title is-1">Podaj dane dla pierwszego punktu:</h1>
+            <div class="columns">
+              <div class="column">
+                   <div class="field">
+                        <div class="control">
+                            <input class="input is-large" type="text" name="1-P1-X" placeholder="P1 X">
+                        </div>
+                    </div>
+              </div>
+              <div class="column">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="text"  name="1-P1-Y" placeholder="P1 Y">
+                    </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="text"  name="1-P2-X" placeholder="P2 X">
+                    </div>
+                </div>
+              </div>
+              <div class="column">
+                 <div class="field">
+                        <div class="control">
+                            <input class="input is-large" type="text"  name="1-P2-Y" placeholder="P2 Y">
+                        </div>
+                 </div>
+              </div>
+            </div>
 
-    {% for row in data %}
-    <tr>
-        {% for cell in row %}
-            <td>{{cell}}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
+            <!--  Second line  -->
+            <h1 class="title is-1">Podaj dane dla drugiego punktu:</h1>
+            <div class="columns">
+              <div class="column">
+                   <div class="field">
+                        <div class="control">
+                            <input class="input is-large" type="text"  name="2-P1-X" placeholder="P1 X">
+                        </div>
+                    </div>
+              </div>
+              <div class="column">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="text"  name="2-P1-Y" placeholder="P1 Y">
+                    </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="text"  name="2-P2-X" placeholder="P2 X">
+                    </div>
+                </div>
+              </div>
+              <div class="column">
+                 <div class="field">
+                        <div class="control">
+                            <input class="input is-large" type="text"  name="2-P2-Y" placeholder="P2 Y">
+                        </div>
+                 </div>
+              </div>
+            </div>
 
- </table>
+            <div class="buttons is-centered">
+                <button class="button is-block is-info is-large is-centered">Zweryfikuj</button>
+            </div>
+        </form>
 </body>
 
 {% endblock %}

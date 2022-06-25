@@ -1,12 +1,3 @@
-table, th, td {
-  border: 1px solid;
-}
-
-th, td {
-  padding: 15px;
-
-}
-
 .hero.is-primary {
     background-color: #2366d1;
 }
