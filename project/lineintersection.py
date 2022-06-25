@@ -1,5 +1,15 @@
 import numpy
+import shapely
+from shapely.geometry import LineString, Point
 from matplotlib import pyplot as plt
+
+
+def line_intersection_shapely(p1, p2, p3, p4):
+    line1 = LineString([p1, p2])
+    line2 = LineString([p3, p4])
+
+    int_pt = line1.intersection(line2)
+    return int_pt.x, int_pt.y
 
 
 def line_intersection_own_impl(line1, line2):
@@ -66,9 +76,10 @@ def points_on_line(p1, p2):
 def intersection(lst1, lst2):
     return list(set(lst1) & set(lst2))
 
+
 def draw_2_lines(p1, p2, p3, p4, result):
     print("Draw 2 lines")
-    #plt.rcParams["figure.figsize"] = [5, 5]
+    # plt.rcParams["figure.figsize"] = [5, 5]
     plt.rcParams["figure.autolayout"] = True
 
     x_values1 = [p1[0], p2[0]]
@@ -110,7 +121,6 @@ def draw_3_lines(p1, p2, p3, p4, p5, p6):
     x_values5 = [p5[0], p6[0]]
     y_values6 = [p5[1], p6[1]]
 
-
     plt.plot(x_values5, y_values6, 'r', linestyle="-", linewidth=7.0)
     plt.text(p5[0] - 0.01, p5[1] + 0.01, "")
     plt.text(p6[0] - 0.01, p6[1] - 0.01, "")
@@ -118,23 +128,26 @@ def draw_3_lines(p1, p2, p3, p4, p5, p6):
     plt.savefig('project/static/image.jpg')
     plt.clf()
 
+
 def lineIntersec(p1, p2, p3, p4):
     try:
-        #p1 = [0, 10]
-        #p2 = [0, 15]
+        # p1 = [0, 10]
+        # p2 = [0, 15]
 
-        #p3 = [-5, 5]
-        #p4 = [5, 20]
-        result = line_intersection_own_impl([p1, p2], [p3, p4])
+        # p3 = [-5, 5]
+        # p4 = [5, 20]
+        # result = line_intersection_own_impl([p1, p2], [p3, p4])
+
+        result = line_intersection_shapely(p1, p2, p3, p4)
 
         print("line_intersection_result", result)
 
         draw_2_lines(p1, p2, p3, p4, result)
         return result
 
-
         print("Lines intersects at:", result)
     except Exception:
+        print("Exception raised, calculate common part")
         commonPoints = getCommonPart(p1, p2, p3, p4)
 
         if (len(commonPoints) == 0):
@@ -147,7 +160,7 @@ def lineIntersec(p1, p2, p3, p4):
         commonSegmentStart = commonPoints[0]
         commonSegmentEnd = commonPoints[-1]
 
-        draw_3_lines(p1, p2, p3, p4, numpy.array(commonSegmentStart), numpy.array(commonSegmentEnd) )
+        draw_3_lines(p1, p2, p3, p4, numpy.array(commonSegmentStart), numpy.array(commonSegmentEnd))
         return [commonSegmentStart, commonSegmentEnd]
 
 
