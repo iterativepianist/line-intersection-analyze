@@ -136,9 +136,9 @@ def lineIntersec(p1, p2, p3, p4):
 
         # p3 = [-5, 5]
         # p4 = [5, 20]
-        # result = line_intersection_own_impl([p1, p2], [p3, p4])
+        result = line_intersection_own_impl([p1, p2], [p3, p4])
 
-        result = line_intersection_shapely(p1, p2, p3, p4)
+        #result = line_intersection_shapely(p1, p2, p3, p4)
 
         print("line_intersection_result", result)
 
